@@ -1,7 +1,7 @@
 data "aws_region" "current" {}
 
 data "aws_secretsmanager_secret" "main_kubernetes" {
-  name = "main_kubernetes"
+  name = var.kubernetes_secret_name
 }
 
 data "kubernetes_secret" "prometheus-http" {

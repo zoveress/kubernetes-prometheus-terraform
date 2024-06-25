@@ -41,3 +41,7 @@ variable "nginx_name" {
 variable "prometheus_http_secret_name" {
   default = "http-auth"
 }
+
+variable "kubernetes_secret_name" {
+  default = "main_kubernetes"
+}
