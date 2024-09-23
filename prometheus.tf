@@ -3,6 +3,23 @@ resource "helm_release" "prometheus" {
   chart      = var.prometheus_release_name
   repository = var.prometheus_repo
   namespace  = var.prometheus_namespace
+
+  set {
+    name  = "affinity"
+    value = jsonencode({
+      nodeAffinity = {
+        requiredDuringSchedulingIgnoredDuringExecution = {
+          nodeSelectorTerms = [{
+            matchExpressions = [{
+              key      = "small_node"
+              operator = "In"
+              values   = ["true"]
+            }]
+          }]
+        }
+      }
+    })
+  }
 }
 
 resource "kubernetes_ingress_v1" "prometheus-ingress" {
