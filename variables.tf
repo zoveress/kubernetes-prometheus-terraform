@@ -35,7 +35,7 @@ variable "nginx_namespace" {
 }
 
 variable "nginx_name" {
-  default = "nginx-ingress-controller"
+  default = "nginx-ingress-controller-ingress-nginx-controller"
 }
 
 variable "prometheus_http_secret_name" {
